@@ -1,0 +1,44 @@
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class OrderCreateRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+//        dd($this->all());
+        $id = $this->route('order');
+
+		return [
+            'name' => 'required',
+            'imageFile' => 'required|image',
+            'description' => 'min:10',
+            'product_name' => 'required',
+            'Address' => 'required',
+            'contact' => 'required',
+            'rating_id' => 'required',
+            'category_id' => 'required',
+            'quantity' => 'required',
+            'price' => 'required',
+            'total_price' => 'required',
+            'description' => 'required',
+		];
+    }
+}
