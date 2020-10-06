@@ -1,16 +1,16 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Http\Requests\Product\CreateProductRequest;
+use App\Models\Product;
 
 
 use App\Models\Category;
-use App\Models\Product;
-use Illuminate\Http\Request;
-
-use  App\Http\Requests\Product\EditRequest;
-
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Product\EditRequest;
+
+
+use App\Http\Requests\Product\CreateRequest;
+use App\Http\Requests\Product\CreateProductRequest;
 
 class ProductController extends Controller
 {
@@ -42,7 +42,7 @@ class ProductController extends Controller
             $products->where('active' , $this->search['active']);
         }
         $categories = Category::get();
-        $products = $products->paginate(10)->appends($this->search);
+        $products = $products->paginate(9)->appends($this->search);
 //        dd($products);
         return view('dashboard.products.index')->with('products', $products)
             ->with('categories', $categories);
@@ -61,7 +61,7 @@ class ProductController extends Controller
 
     }
 
-    public function store(Request $request)
+    public function store(CreateRequest $request)
     {
  //      dd($request->all());
         $request['published'] = $request['published'] ? 1 : 0;
@@ -100,7 +100,7 @@ class ProductController extends Controller
         return view("dashboard.products.edit")->withProduct($product)->withCategories($categories);
     }
 
-    public function update(Request $request,  $id)
+    public function update(EditRequest $request,  $id)
     {
 //        dd("hellp");
         if (!$request->active) {

@@ -37,8 +37,8 @@
 <div class="container-contact100">
     <div class="wrap-contact100">
         <form class="contact100-form validate-form" action="{{ route('x5') }}"  method="post" enctype="multipart/form-data" >
-            @csrf
-            @method('POST')
+            @csrf 
+			@include("shared.msg")
             <span class="contact100-form-title">
 					Post Advertisment
 				</span>
@@ -46,29 +46,23 @@
             <div class="wrap-input100 validate-input bg1 col-12 rs1-wrap-input100"
                  data-validate="Enter Your Email (e@a.x)">
                 <span class="label-input100">Your Name *</span>
-                <input class="input100" type="text" name="name" id="name"  placeholder="Enter Your Name ">
+                <input class="input100" value='{{old("name")}}' type="text" name="name" id="name"  placeholder="Enter Your Name ">
             </div>
             <div class="wrap-input100 validate-input bg1 col-12 rs1-wrap-input100"
                  data-validate="Enter Your Email (e@a.x)">
                 <span class="label-input100">Product Name *</span>
-                <input class="input100" type="text" name="product_name" id="product_name" placeholder="Enter Product Name">
+                <input class="input100"value='{{old("product_name")}}' type="text" name="product_name" id="product_name" placeholder="Enter Product Name">
             </div>
             <div class="wrap-input100 validate-input col-12 bg1 rs1-wrap-input100"
                  data-validate="Enter Your Email (e@a.x)">
                 <span class="label-input100">Quantity  *</span>
-                <input class="input100" type="numbder" name="quantity" id="quantity" placeholder="Enter Quantity">
+                <input class="input100"value='{{old("quantity")}}' type="numbder" name="quantity" id="quantity" placeholder="Enter Quantity">
             </div>
               <div class="wrap-input100 validate-input col-12 bg1 rs1-wrap-input100"
                  data-validate="Enter Your Email (e@a.x)">
                 <span class="label-input100">Price  *</span>
-                <input class="input100" type="numbder" name="price" id="price" placeholder="Enter Price">
+                <input class="input100"value='{{old("price")}}' type="numbder" name="price" id="price" placeholder="Enter Price">
             </div>
-              {{-- <div class="wrap-input100 validate-input col-12 bg1 rs1-wrap-input100"
-                 data-validate="Enter Your Email (e@a.x)">
-                <span class="label-input100">Total Price  *</span>
-                <input class="input100" type="numbder" name="total_price" id="total_price" placeholder="Enter Total Price ">
-            </div> 
-            --}}
             <div class="wrap-input100 bg1 col-12 rs1-wrap-input100">
                 <span class="label-input100">Image</span>
                 <div class='col-sm-6'>
@@ -81,26 +75,26 @@
             </div>
             <div class="wrap-input100 bg1 col-12 rs1-wrap-input100">
                 <span class="label-input100">address</span>
-                <input class="input100" type="text" name="address" id="address" placeholder="Enter Number Phone">
+                <input class="input100"value='{{old("address")}}' type="text" name="address" id="address" placeholder="Enter Number Phone">
             </div>
               <div class="wrap-input100 validate-input col-12 bg1 rs1-wrap-input100"
                  data-validate="Enter Your Email (e@a.x)">
                 <span class="label-input100">phone  *</span>
-                <input class="input100" type="text" name="phone" id="phone" placeholder="Enter your Phone ">
+                <input class="input100"value='{{old("phone")}}' type="text" name="phone" id="phone" placeholder="Enter your Phone ">
             </div>
             <div class="wrap-input100 validate-input col-12 bg1 rs1-wrap-input100"
                  data-validate="Enter Your Email (e@a.x)">
                 <span class="label-input100">email  *</span>
-                <input class="input100" type="text" name="email" id="email" placeholder="Enter your Email ">
+                <input class="input100"value='{{old("email")}}' type="text" name="email" id="email" placeholder="Enter your Email ">
             </div>
             <div class="wrap-input100 input100-select bg1">
                 <span class="label-input100">Select a category *</span>
                 <div>
-                    <select class="js-select2" name="category_id" id="category_id">
+                    <select class="js-select2" value='{{old("category_id")}}' name="category_id" id="category_id">
                         <option value="0">Please chooses</option>
                         @if(\App\Models\Category::get() != null)
                             @foreach(\App\Models\Category::get() as $category)
-                                <option value="{{$category->id ?? ""}}">{{ $category->title ?? ""}}</option>
+                                <option {{old('category_id')== $category->id?"selected":""}} value='{{$category->id}}'>{{$category->title}}</option>
                             @endforeach
                         @endif
                     </select>
@@ -114,17 +108,16 @@
                         <option value="0">Please chooses</option>
                         @if(\App\Models\Rating::get() != null)
                             @foreach(\App\Models\Rating::get() as $rating)
-                                <option value="{{$rating->id ?? ""}}">{{ $rating->title ?? ""}}</option>
+                            <option {{old('rating_id')== $rating->id?"selected":""}} value='{{$rating->id}}'>{{$rating->title}}</option>
                             @endforeach
                         @endif
                     </select>
                     <div class="dropDownSelect2"></div>
                 </div>
-            </div>
-    3        
+            </div>       
             <div class="wrap-input100 validate-input bg0 rs1-alert-validate" data-validate="Please Type Your Message">
                 <span class="label-input100">Discrption</span>
-                <textarea class="input100" name="description" id="description" placeholder="Your message here..."></textarea>
+                <textarea class="input100" value="{{old('description')}}" name="description" id="description" placeholder="Your message here..."></textarea>
             </div>
 
             <div class="container-contact100-form-btn">

@@ -2,9 +2,7 @@
 @section("title", "Show Product")
 @section("content")
 
-
     <form  role="form">
-
         <div class="card-body">
             <div class="form-group">
                 <label for="title">Title</label>
@@ -15,16 +13,8 @@
                 <textarea  class="form-control" disabled id="description" name="description" >{{$products->description}}</textarea>
             </div>
             <div class="form-group">
-                <label for="old_price">Old Price</label>
-                <input  type="text" disabled class="form-control" id="old_price" name="old_price" value="{{$products->old_price}}">
-            </div>
-            <div class="form-group">
-                <label for="comment">New Price</label>
-                <input  type="text" disabled class="form-control" id="new_price" name="new_price" value="{{$products->new_price}}">            </div>
-            <div class="form-group">
-                <label for="size">Size</label>
-                <input  type="number"  class="form-control" disabled id="size" name="size" value="{{$products->size}}">
-            </div>
+                <label for="comment"> Price</label>
+                <input  type="text" disabled class="form-control" id="price" name="price" value="{{$products->price}}">            </div>
             <div class="form-group">
                 <label for="image">Image</label>
                 <br>
@@ -41,13 +31,13 @@
                 </select>
             </div>
             <div class="form-group">
-                <input  type="checkbox" disabled  id="active" name="active" {{$products->active?'checked' : ''}} >
+                <input  type="checkbox" disabled  id="published" name="published" {{$products->published?'checked' : ''}} >
                 <label for="published">Active</label>
 
             </div>
             <div>
 
-                <a class='btn btn-danger' href=''>Back</a>
+                <a class='btn btn-danger' href='{{ route('products.index') }}'>Back</a>
             </div>
         </div>
     </form>

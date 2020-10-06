@@ -46,7 +46,7 @@
 
               <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
                 <li class="active"><a href="{{ route('home-view') }}">Home</a></li>
-                <li><a href="{{ route('listings') }}">Ads</a></li>
+                <li><a href="">Ads</a></li>
                 <li class="has-children">
                   <a href="{{ route('about') }}">About</a>
                   {{-- <ul class="dropdown">
@@ -76,6 +76,11 @@
                           {{ csrf_field() }}
                       </form>
                   </div>
+                   <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                    <img alt="" class="fa fa-user" src="" />
+                                    <span class="username username-hide-on-mobile"> {{ auth()->user()->name }}    </span>
+                                    <i class="fa fa-angle-down"></i>
+                    </a>
                 @endguest
 
                 <li><a href="{{ route('post-view') }}" class="cta"><span class="bg-primary text-white rounded">+ Post an Ad</span></a></li>

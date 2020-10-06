@@ -39,7 +39,7 @@
                 <th>category</th>
                 <th>image</th>
                 <th> description</th>
-                <th>reviews</th>
+                <th>price</th>
                 <th> address</th>
                 <th>published</th>
                 <th>Edit / Delete</th>
@@ -70,7 +70,7 @@
                         </div>
                     </td>
                     <td>{{ $product->description }}</td>
-                    <td>{{ $product->reviews }}</td>
+                    <td>{{ $product->price }}</td>
                     <td>{{ $product->address }}</td>
                     <td>
                         <input type="checkbox" disabled {{ $product->published == 1 ?"checked" : "" }}>
@@ -90,7 +90,8 @@
             @endforeach
             </tbody>
         </table>
-        {{ $products->links() }}
+    {{ $products->links("pagination::bootstrap-4") }}
+
     @else
         <div class='alert alert-warning'>Sorry, there is no results to your search</div>
 

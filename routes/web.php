@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,17 +19,21 @@ Auth::routes();
 Route::get('/', function () {
     return view('frontend.home.index');
 });
+Route::get("single-order/{id}",'FrontEnd\HomeController@adSingle')->name("listings");
+
+Route::get("single-product/{id}",'FrontEnd\HomeController@adProduct')->name("addproduct");
+
+
 
 Route::get("/view",'FrontEnd\PostAdController@PostAd')->name("post-view")->middleware('auth');
 
   Route::get('/home', 'HomeController@index')->name('home');
-  Route::get("/singleAd",'FrontEnd\HomeController@adSingle')->name("listings");
   Route::get("/",'FrontEnd\HomeController@index')->name("home-view");
   Route::post("/comments",'FrontEnd\CommentFrontController@storeComment')->name("add_comment");
 
-  
+
   Route::post("/contactus",'FrontEnd\HomeController@postContact')->name("contactus");
-  
+
   Route::get("/about",'FrontEnd\HomeController@about')->name("about");
   Route::get("/contact",'FrontEnd\HomeController@contact')->name("contact");
   Route::get("/blog",'FrontEnd\HomeController@blog')->name("blog");
@@ -86,9 +91,9 @@ Route::group([
     Route::post("post/edit/{id}",'Admin\PostController@update');
 
     Route::post("product",'Admin\ProductController@store')->name('post-product');
-   
+
     Route::get("/order","Admin\OrderController@index")->name('order');
-  
+
     Route::get("/order/{id}/delete","Admin\OrderController@destroy")->name('delete-order');
     Route::get('/order-done/{id}','Admin\OrderController@done')->name('order.done');
     Route::get('/order-pending/{id}','Admin\OrderController@pending')->name('order.pending');
@@ -96,11 +101,15 @@ Route::group([
     Route::get('/order_show/{id}','Admin\OrderController@show')->name('orders.show');
 
     Route::get('/order_status/approve/{id}','Admin\OrderController@approve')->name('order.approve');
-     Route::get('/order_status/{id}','Admin\OrderController@cancel')->name('order.cancel');
+    Route::get('/order_status/{id}','Admin\OrderController@cancel')->name('order.cancel');
 
 
 Route::get("settings",'Admin\SettingController@setting')->name('settings');
-Route::post("settings",'Admin\SettingController@store')->name('post-settings');   
+Route::post("settings",'Admin\SettingController@store')->name('post-settings');
+
+
+Route::get("/change-password",'Admin\UserController@changePassword')->name("change-password");
+Route::put("/change-password",'Admin\UserController@postChangePassword')->name("post-change-password");
 
 });
 

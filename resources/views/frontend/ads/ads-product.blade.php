@@ -2,6 +2,7 @@
 @section("title","Ads-Single")
 @section("content")
 
+
     <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url({{asset('classyads/images/hero_1.jpg')}}" data-aos="fade" data-stellar-background-ratio="0.5">
       <div class="container">
         <div class="row align-items-center justify-content-center text-center">
@@ -11,9 +12,9 @@
 
             <div class="row justify-content-center mt-5">
               <div class="col-md-8 text-center">
-                <h1>{{ $orders->id }}</h1>
-                <h1>{{ $orders->product_name }}</h1>
-                <p class="mb-0">{{ $orders->address }}</p>
+                <h1>{{ $products->id }}</h1>
+                <h1>{{ $products->product_name }}</h1>
+                <p class="mb-0">{{ $products->address }}</p>
               </div>
             </div>
 
@@ -30,13 +31,13 @@
             <div class="mb-4">
             
               <div class="slide-one-item home-slider owl-carousel">
-                <div><img src="{{asset('storage/'.$orders->image)}}" alt="Image" class="img-fluid"></div>
+                <div><img src="{{asset('storage/'.$products->image)}}" alt="Image" class="img-fluid"></div>
 
               </div>
             </div>
 
-            <h4 class="h5 mb-4 text-black">{{ $orders->disription }}</h4>
-            <p >Price : {{ $orders->price }}</p>
+            <h4 class="h5 mb-4 text-black">{{ $products->disription }}</h4>
+            <p >Price : {{ $products->price }}</p>
             <p>Nisi, error. Molestias, quidem eaque sequi aut perspiciatis assumenda obcaecati ut quod eius reprehenderit. Iure rem numquam totam odio dignissimos aspernatur soluta. Corporis suscipit modi iste consequatur, repellat nihil omnis molestias optio. Dolorem ullam eius officia, eum ratione dolorum assumenda.</p>
             <p>Soluta corporis blanditiis cupiditate debitis eveniet, temporibus ut cumque sint repudiandae quidem tenetur commodi id, quam. Sapiente corrupti magnam quis nulla, asperiores neque tenetur labore aperiam provident nostrum sequi delectus voluptatem fuga officiis repellat, ratione aspernatur eius repellendus modi reprehenderit.</p>
             <p>Sapiente molestias voluptate cupiditate blanditiis quasi qui aperiam accusamus aspernatur ipsam velit nihil quaerat voluptatum soluta laboriosam ipsum veritatis at reiciendis quod voluptates, saepe harum dignissimos placeat dolorum aliquid! Quod quasi praesentium optio ratione non et sit quos excepturi cum?</p>

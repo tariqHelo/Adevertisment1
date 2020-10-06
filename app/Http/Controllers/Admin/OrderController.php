@@ -80,6 +80,7 @@ class OrderController extends Controller
 
     public function show($id)
     {
+        
         $orders=Order::all();
         $order = Order::find($id);
 //        dd($comments);

@@ -347,10 +347,10 @@
                                     <i class="fa fa-angle-down"></i>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-default">
-{{--                                    <li>--}}
-{{--                                        <a href="{{route('change-password')}}">--}}
-{{--                                            <i class="icon-user"></i> Change Password </a>--}}
-{{--                                    </li>--}}
+                                   <li>
+                                       <a href="{{route('change-password')}}">
+                                            <i class="icon-user"></i> Change Password </a>
+                                   </li>
                                     <li class="divider"> </li>
                                     <li>
                                         <a class="dropdown-item" href="{{ route('logout') }}"

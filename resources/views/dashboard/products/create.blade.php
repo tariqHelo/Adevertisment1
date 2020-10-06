@@ -8,7 +8,6 @@ s
     <div class="portlet light ">
         <div class="portlet-body form">
             <form method="post" enctype="multipart/form-data" action="{{ route('post-product') }}" role="form">
-
                 @csrf
                 <div class="form-body">
                     <div class="form-group has-success"><label for="form_control_1">Title</label>
@@ -17,7 +16,7 @@ s
 
                     </div>
                 </div>
-                <div class="form-group has-success">
+                <div class="form-group has-success" name="category_id" id="category_id">
                     <label for="form_control_1">Category</label>
                     <select name="category_id" class="form-control">
                         <option value="0">Select Category</option>
@@ -27,7 +26,7 @@ s
                         @endforeach
                     </select>
                 </div>
-                    <div class="form-group has-success">
+                    <div class="form-group has-success" name="rating_id" id="rating_id">
                     <label for="form_control_1">subcategory</label>
                     <select name="rating_id" class="form-control">
                         <option value="0">Select subcategory</option>

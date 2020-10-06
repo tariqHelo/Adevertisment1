@@ -28,9 +28,7 @@ class EditRequest extends FormRequest
 
         return [
             'title' => 'required|unique:categories,title,' . $id . ',id',
-
             'price' => 'required',
-
             'imageFile' => 'image',
             'description' => 'min:10',
 

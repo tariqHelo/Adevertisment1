@@ -6,11 +6,11 @@ use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\OrderCreateRequest;
+use App\Http\Requests\Order\OrderRequest;
 
 class StoreOrderController extends Controller
 {
-  public function store(Request $request){
+  public function store(OrderRequest $request){
     //  dd($request->all());
 
    if(!$request->order_status_id){
@@ -24,7 +24,7 @@ class StoreOrderController extends Controller
     //  Order::create($request->all());
      $order = Order::create($request->all());
      session()->flash('msg', "s: Order product create successfully");
-     return redirect('home');
+     return view('frontend.home.index');
    
    }
 }

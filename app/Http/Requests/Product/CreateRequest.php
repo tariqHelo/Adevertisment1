@@ -28,7 +28,7 @@ class CreateRequest extends FormRequest
 
 		return [
             'title' => 'required|unique:categories,title,'.$id.',id',
-            'imageFile' => 'required|image',
+            'imageFile'        => 'required||image|mimes:jpeg,png,jpg,gif,svg|max:1000',
             'description' => 'min:10',
 
 		];

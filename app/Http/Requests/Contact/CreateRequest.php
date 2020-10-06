@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Contact;
 
+use App\Http\Requests\order\OrderRequest;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateRequest extends FormRequest

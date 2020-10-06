@@ -44,8 +44,37 @@
             </div>
               {{ $posts->links("pagination::bootstrap-4") }}
 
-              {{-- {{ $posts->links() }} --}}
+            <div class="col-12 text-center mt-5">
+              
+            </div>
+          </div>
 
+          <div class="col-md-3 ml-auto">
+            <div class="mb-5">
+              <h3 class="h5 text-black mb-3">Popular Posts</h3>
+               @php $posts = \App\Models\Post::get() @endphp
+                @foreach($posts as $post)
+                  <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#">{{ $post->title }}</a></li>
+           
+                  </ul>
+              @endforeach    
+            </div>
+
+
+            <div class="mb-5">
+              <h3 class="h5 text-black mb-3">Recent Comments</h3>
+                @php $comments = \App\Models\Comment::get() @endphp
+                @foreach($comments as $comment)
+                  <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#">{{ $comment->name }}</a> <em>in</em> <a href="#">{{ $comment->comment }}</a></li>
+          
+                  </ul>
+                @endforeach    
+
+            </div>
+
+          </div>
 
                <div class="comment-form">
                         <h4>Leave a Reply</h4>

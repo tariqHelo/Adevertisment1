@@ -23,6 +23,7 @@ class CreateProductsTable extends Migration
             $table->integer('reviews')->default(0);
             $table->string('address');
             $table->integer('category_id');
+            $table->integer('rating_id');
             $table->boolean('published')->default(0);
             $table->timestamps();
         });
