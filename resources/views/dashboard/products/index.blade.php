@@ -17,7 +17,7 @@
         </div>
 
         <div class='col-sm-2'>
-            <select name='active' class='form-control'>
+            <select name='published' class='form-control'>
                 <option value=''>Any status</option>
                 <option {{request()->get("published")?"selected":""}} value='1'>Active</option>
                 <option {{request()->get("published")=='0'?"selected":""}} value='0'>InActive</option>

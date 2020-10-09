@@ -16,18 +16,18 @@
         <div class="col-sm-2">
             <select name="user_id"  class="form-control">
                 <option value=''>Any Customer</option>
-                {{-- @foreach($users as $user)
+                @foreach($users as $user)
                     <option {{ $user->id==request()->get('user_id')?"selected":""}} value='{{ $user->id}}'>{{ $user->name}}</option>
-                @endforeach --}}
+                @endforeach
             </select>
         </div>
 
         <div class="col-sm-2">
             <select name= "order_status_id" class="form-control">
                 <option value="">Any status</option>
-                {{-- @foreach($status as $status)
+                @foreach($status as $status)
                     <option {{ $status->id==request()->get('order_status_id')?"selected":""}} value='{{ $status->id}}'>{{ $status->title}}</option>
-                @endforeach --}}
+                @endforeach
             </select>
         </div>
         <div class='col-sm-2'>

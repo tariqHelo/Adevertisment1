@@ -114,12 +114,11 @@
                     </select>
                     <div class="dropDownSelect2"></div>
                 </div>
-            </div>       
+            </div> 
             <div class="wrap-input100 validate-input bg0 rs1-alert-validate" data-validate="Please Type Your Message">
                 <span class="label-input100">Discrption</span>
-                <textarea class="input100" value="{{old('description')}}" name="description" id="description" placeholder="Your message here..."></textarea>
+                <textarea class="input100" value="{{old('description')?? ""}}" name="description" id="description" placeholder="Your message here...">{{old('description')?? ""}}</textarea>
             </div>
-
             <div class="container-contact100-form-btn">
                 <button type="submit" class="contact100-form-btn">
 						<span>

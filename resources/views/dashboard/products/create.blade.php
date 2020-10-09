@@ -1,8 +1,6 @@
 @extends("dashboard.layouts.app")
 
 @section("title","Create New Product")
-
-s
 @section("content")
 
     <div class="portlet light ">
@@ -55,10 +53,9 @@ s
                     <input type="number" class="form-control" value="{{old('price')}}" id="price" name="price">
                 </div>
              
-                <div class="form-group">
+                 <div class="form-group">
                     <label for="description">Description</label>
-                    <textarea class="form-control" id="description" value="{{old('description')}}"
-                              name="description"></textarea>
+                    <textarea  class="form-control"  id="description" value="{{old('description')?? ""}}" name="description" >{{old('description')?? ""}}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="address">Address</label>

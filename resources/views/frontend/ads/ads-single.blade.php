@@ -1,7 +1,10 @@
  @extends("frontend.layout")
 @section("title","Ads-Single")
 @section("content")
-
+<?php
+    use App\Models\About;
+$abouts = About::first();
+?>
     <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url({{asset('classyads/images/hero_1.jpg')}}" data-aos="fade" data-stellar-background-ratio="0.5">
       <div class="container">
         <div class="row align-items-center justify-content-center text-center">
@@ -35,46 +38,19 @@
               </div>
             </div>
 
-            <h4 class="h5 mb-4 text-black">{{ $orders->disription }}</h4>
-            <p >Price : {{ $orders->price }}</p>
-            <p>Nisi, error. Molestias, quidem eaque sequi aut perspiciatis assumenda obcaecati ut quod eius reprehenderit. Iure rem numquam totam odio dignissimos aspernatur soluta. Corporis suscipit modi iste consequatur, repellat nihil omnis molestias optio. Dolorem ullam eius officia, eum ratione dolorum assumenda.</p>
-            <p>Soluta corporis blanditiis cupiditate debitis eveniet, temporibus ut cumque sint repudiandae quidem tenetur commodi id, quam. Sapiente corrupti magnam quis nulla, asperiores neque tenetur labore aperiam provident nostrum sequi delectus voluptatem fuga officiis repellat, ratione aspernatur eius repellendus modi reprehenderit.</p>
-            <p>Sapiente molestias voluptate cupiditate blanditiis quasi qui aperiam accusamus aspernatur ipsam velit nihil quaerat voluptatum soluta laboriosam ipsum veritatis at reiciendis quod voluptates, saepe harum dignissimos placeat dolorum aliquid! Quod quasi praesentium optio ratione non et sit quos excepturi cum?</p>
-
+            <h4 class="h5 mb-4 text-black"></h4>
+            <p >Category   : {{ $orders->category->title }}</p>
+            <p >SubCategory   : {{ $orders->rating->title }}</p>
+            <p >Details : {{ $orders->description }}</p>
+            <p >Name        : {{ $orders->name }}</p>
+            <p >Total Price       : {{ $orders->price }}$</p>
+            <p >phone       : {{ $orders->phone }}</p>
+            <p >email       : {{ $orders->email }}</p>
           </div>
 
 
           <div class="col-lg-3 ml-auto">
 
-            <div class="mb-5">
-              <h3 class="h5 text-black mb-3">Filters</h3>
-              <form action="#" method="post">
-                <div class="form-group">
-                  <input type="text" placeholder="What are you looking for?" class="form-control">
-                </div>
-                <div class="form-group">
-                  <div class="select-wrap">
-                      <span class="icon"><span class="icon-keyboard_arrow_down"></span></span>
-                      <select class="form-control" name="" id="">
-                        <option value="">All Categories</option>
-                        <option value="" selected="">Real Estate</option>
-                        <option value="">Books &amp;  Magazines</option>
-                        <option value="">Furniture</option>
-                        <option value="">Electronics</option>
-                        <option value="">Cars &amp; Vehicles</option>
-                        <option value="">Others</option>
-                      </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                  <!-- select-wrap, .wrap-icon -->
-                  <div class="wrap-icon">
-                    <span class="icon icon-room"></span>
-                    <input type="text" placeholder="Location" class="form-control">
-                  </div>
-                </div>
-              </form>
-            </div>
 
             <div class="mb-5">
               <form action="#" method="post">
@@ -126,8 +102,7 @@
 
             <div class="mb-5">
               <h3 class="h6 mb-3">More Info</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti voluptatem placeat facilis, reprehenderit eius officiis.</p>
-            </div>
+              <p> {{  $abouts->moreInfo	?? ""}}<br> </p><br>
 
           </div>
 

@@ -30,7 +30,7 @@ class OrderRequest extends FormRequest
             'product_name'     => 'required',
             'quantity'         => 'required',
             'price'            => 'required',
-            'imageFile'        => 'required||image|mimes:jpeg,png,jpg,gif,svg|max:1000',
+            'imageFile'        =>  'required|mimes:jpeg,png,jpg|max:3000',
             'address'          => 'required',
             'phone'            => 'required',
             'email'            => 'required|email',

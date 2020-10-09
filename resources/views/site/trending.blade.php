@@ -1,8 +1,7 @@
 @php
-use App\Models\Product ;
-$products = Product::orderBy('reviews');
-$product_1 = $products->skip(6)->take(4)->get();
-$product_2 = $products->skip(9)->take(4)->get();
+$products = App\Models\Product::get() ;
+$half = ceil($products->count() / 2);
+$chunks = $products->chunk(intval($half));
 @endphp
 <div class="site-section bg-light">
     <div class="container">
@@ -12,57 +11,30 @@ $product_2 = $products->skip(9)->take(4)->get();
             </div>
         </div>
         <div class="row mt-5">
-            <div class="col-lg-6">
-               @foreach($product_1 as $product)
-
-                <div class="d-block d-md-flex listing">
-                    <a href="{{ route('addproduct',$product->id) }}" class="img d-block" style="background-image: url('{{ asset('storage/'.$product->image) }}')"></a>
-                    <div class="lh-content">
-                        <span class="category">{{ $product->category->title ?? "empty" }}</span>
-                          <span class="category">{{ $product->rating->title ?? "" }}</span>
-                            <a href="#" class="bookmark"><span class="icon-heart"></span></a>
-                            <h3><a href="listings-single.html">{{ $product->title }}</a></h3>
-                            <address> {{ $product->address }} </address>
-                            <p class="mb-0">
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-secondary"></span>
-                                <span class="review">({{$product->reviews}} Reviews)</span>
-                            </p>
-                    </div>
-                </div>
-
-    @endforeach
-
-            </div>
-            <div class="col-lg-6">
-                @foreach($product_2 as $product)
-
-                    <div class="d-block d-md-flex listing">
-                        <a href="{{ route('addproduct',$product->id) }}" class="img d-block" style="background-image: url('{{ asset('storage/'.$product->image) }}')"></a>
-                        <div class="lh-content">
-                            <span class="category">{{ $product->category->title ?? "empty" }}</span>
-                            <span class="category">{{ $product->rating->title ?? "" }}</span>
-                            <a href="#" class="bookmark"><span class="icon-heart"></span></a>
-                            <h3><a href="listings-single.html">{{ $product->title }}</a></h3>
-                            <address> {{ $product->address }} </address>
-                            <p class="mb-0">
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-secondary"></span>
-                                <span class="review">({{$product->reviews}} Reviews)</span>
-                            </p>
-                        </div>
-                    </div>
-
+                @foreach($chunks as $chunk)
+                            <div class="col-lg-6">
+                                @foreach($chunk as $opcion)
+                                        <div class="d-block d-md-flex listing">
+                                            <a href="{{ route('addproduct',$opcion->id) }}" class="img d-block" style="background-image: url('{{ asset('storage/'.$opcion->image) }}')"></a>
+                                            <div class="lh-content">
+                                                <span class="category">{{ $opcion->category->title ?? "empty" }}</span>
+                                                <span class="category">{{ $opcion->rating->title ?? "" }}</span>
+                                                    <a href="#" class="bookmark"><span class="icon-heart"></span></a>
+                                                    <h3><a href="listings-single.html">{{ $opcion->title }}</a></h3>
+                                                    <address> {{ $opcion->address }} </address>
+                                                    <p class="mb-0">
+                                                        <span class="icon-star text-warning"></span>
+                                                        <span class="icon-star text-warning"></span>
+                                                        <span class="icon-star text-warning"></span>
+                                                        <span class="icon-star text-warning"></span>
+                                                        <span class="icon-star text-secondary"></span>
+                                                        <span class="review">({{$opcion->reviews}} Reviews)</span>
+                                                    </p>
+                                            </div>
+                                        </div>
+                                @endforeach
+                            </div >
                 @endforeach
-            </div>
         </div>
     </div>
 </div>
-  
-

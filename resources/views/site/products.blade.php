@@ -1,68 +1,95 @@
 @php
-use \App\Models\Product;
-$products = Product::orderBy('reviews');
-$product_1 = $products->skip(0)->take(3)->get();
-$product_2 = $products->skip(3)->take(3)->get();
+    $products = \App\Models\Product::take(6)->get();
 @endphp
-<div class="site-section bg-light">
-    <div class="container">
-        <div class="row mb-5">
-            <div class="col-md-7 text-left border-primary">
-                <h2 class="font-weight-light text-primary">Trending Today</h2>
-            </div>
+ <div class="site-section" data-aos="fade">
+      <div class="container">
+        <div class="row justify-content-center mb-5">
+          <div class="col-md-7 text-center border-primary">
+            <h2 class="font-weight-light text-primary">Popular Products</h2>
+            <p class="color-black-opacity-5">Lorem Ipsum Dolor Sit Amet</p>
+          </div>
         </div>
-        <div class="row mt-5">
-            <div class="col-lg-6">
-               @foreach($product_1 as $product)
-                <div class="d-block d-md-flex listing">
-                    <a href="{{ route('addproduct',$product->id) }}" class="img d-block" style="background-image: url('{{ asset('storage/'.$product->image) }}')"></a>
-                    <div class="lh-content">
-                        <span class="category">{{ $product->category->title ?? "empty" }}</span>
-                          <span class="category">{{ $product->rating->title ?? "" }}</span>
-                            <a href="#" class="bookmark"><span class="icon-heart"></span></a>
-                            <h3><a href="listings-single.html">{{ $product->title }}</a></h3>
-                            <address> {{ $product->address }} </address>
-                            <p class="mb-0">
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-secondary"></span>
-                                <span class="review">({{$product->reviews}} Reviews)</span>
-                            </p>
-                    </div>
+
+        <div class="row">
+            @foreach($products as $product)
+            <div class="col-md-6 mb-4 mb-lg-4 col-lg-4">
+
+              <div class="listing-item">
+                <div class="listing-image">
+                  <img src="{{asset('storage/'.$product->image)}}" alt="Image" class="img d-block">
                 </div>
-        
-    @endforeach
-            </div>
-            <div class="col-lg-6">
-                @foreach($product_2 as $product)
+                <div class="listing-item-content">
+                  <a href="#" class="bookmark" data-toggle="tooltip" data-placement="left" title="Bookmark"><span class="icon-heart"></span></a>
+                  <a class="px-3 mb-3 category" href="#">{{ $product->title }}</a>
+                    <a class="px-3 mb-3 category" href="#">{{ $product->rating->title ?? "" }}</a>
+                  <h2 class="mb-1"><a href="#">{{ $product->category->title ?? "other category" }}</a></h2>
+                  
+                  <span class="address">{{ $product->address }}</span>
+                </div>
+              </div>
 
-                    <div class="d-block d-md-flex listing">
-                        <a href="{{ route('addproduct',$product->id) }}" class="img d-block" style="background-image: url('{{ asset('storage/'.$product->image) }}')"></a>
-                        <div class="lh-content">
-                            <span class="category">{{ $product->category->title ?? "empty" }}</span>
-                            <span class="category">{{ $product->rating->title ?? "" }}</span>
-                            <a href="#" class="bookmark"><span class="icon-heart"></span></a>
-                            <h3><a href="listings-single.html">{{ $product->title }}</a></h3>
-                            <address> {{ $product->address }} </address>
-                            <p class="mb-0">
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-secondary"></span>
-                                <span class="review">({{$product->reviews}} Reviews)</span>
-                            </p>
-                        </div>
-                    </div>
-
-                @endforeach
             </div>
+            @endforeach
+            {{-- <div class="col-md-6 mb-4 mb-lg-4 col-lg-4">
+
+              <div class="listing-item">
+                <div class="listing-image">
+                  <img src="{{asset('classyads/images/img_2.jpg')}}" alt="Image" class="img-fluid">
+                </div>
+                <div class="listing-item-content">
+                  <a href="#" class="bookmark"><span class="icon-heart"></span></a>
+                  <a class="px-3 mb-3 category" href="#">Real Estate</a>
+                  <h2 class="mb-1"><a href="#">House with Swimming Pool</a></h2>
+                  <span class="address">West Orange, New York</span>
+                </div>
+              </div>
+
+            </div>
+            <div class="col-md-6 mb-4 mb-lg-4 col-lg-4">
+
+              <div class="listing-item">
+                <div class="listing-image">
+                  <img src="{{asset('classyads/images/img_3.jpg')}}" alt="Image" class="img-fluid">
+                </div>
+                <div class="listing-item-content">
+                  <a href="#" class="bookmark"><span class="icon-heart"></span></a>
+                  <a class="px-3 mb-3 category" href="#">Furniture</a>
+                  <h2 class="mb-1"><a href="#">Wooden Chair &amp; Table</a></h2>
+                  <span class="address">West Orange, New York</span>
+                </div>
+              </div>
+
+            </div>
+            <div class="col-md-6 mb-4 mb-lg-4 col-lg-6">
+
+              <div class="listing-item">
+                <div class="listing-image">
+                  <img src="{{asset('classyads/images/img_4.jpg')}}" alt="Image" class="img-fluid">
+                </div>
+                <div class="listing-item-content">
+                  <a href="#" class="bookmark" data-toggle="tooltip" data-placement="left" title="Bookmark"><span class="icon-heart"></span></a>
+                  <a class="px-3 mb-3 category" href="#">Electronics</a>
+                  <h2 class="mb-1"><a href="#">iPhone X gray</a></h2>
+                  <span class="address">West Orange, New York</span>
+                </div>
+              </div>
+
+            </div>
+            <div class="col-md-6 mb-4 mb-lg-4 col-lg-6">
+
+              <div class="listing-item">
+                <div class="listing-image">
+                  <img src="{{asset('classyads/images/img_2.jpg')}}" alt="Image" class="img-fluid">
+                </div>
+                <div class="listing-item-content">
+                  <a href="#" class="bookmark"><span class="icon-heart"></span></a>
+                  <a class="px-3 mb-3 category" href="#">Real Estate</a>
+                  <h2 class="mb-1"><a href="#">House with Swimming Pool</a></h2>
+                  <span class="address">West Orange, New York</span>
+                </div>
+              </div>
+
+            </div> --}}
         </div>
+      </div>
     </div>
-</div>
-  
-
-
-

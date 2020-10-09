@@ -15,16 +15,15 @@ class StoreOrderController extends Controller
 
    if(!$request->order_status_id){
     $request['order_status_id'] = 1;
-}
-//get logged user from access_token
+    }
+    //get logged user from access_token
      $request['user_id'] = $request->user()->id;
      $request['total_price'] = $request['quantity'] * $request['price'];
      $imageName = basename($request->imageFile->store("public"));
      $request['image'] = $imageName;
-    //  Order::create($request->all());
      $order = Order::create($request->all());
-     session()->flash('msg', "s: Order product create successfully");
+     session()->flash('msg', "s: Order product create successfully                                            ");
+     sleep(4);
      return view('frontend.home.index');
-   
    }
 }

@@ -27,9 +27,9 @@ class EditRequest extends FormRequest
         $id = $this->route('product');
 
         return [
-            'title' => 'required|unique:categories,title,' . $id . ',id',
-            'price' => 'required',
-            'imageFile' => 'image',
+            'title'       => 'required|unique:categories,title,' . $id . ',id',
+            'price'       => 'required',
+            // 'imageFile'   =>   'required|mimes:jpeg,png,jpg|dimensions:min_width=800,min_height=687|max:3000',
             'description' => 'min:10',
 
 

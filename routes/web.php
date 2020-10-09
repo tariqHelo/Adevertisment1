@@ -19,6 +19,8 @@ Auth::routes();
 Route::get('/', function () {
     return view('frontend.home.index');
 });
+Route::get("advertisement",'FrontEnd\HomeController@allProduct')->name("allProduct");
+
 Route::get("single-order/{id}",'FrontEnd\HomeController@adSingle')->name("listings");
 
 Route::get("single-product/{id}",'FrontEnd\HomeController@adProduct')->name("addproduct");

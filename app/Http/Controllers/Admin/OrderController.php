@@ -20,26 +20,25 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
         $user_id = \request()->get('user_id') ;
         $price = \request()->get('price') ;
         $order_status_id = \request()->get('order_status_id');
-
         $orders=Order::orderBy('id','desc');
-        if ($user_id!="")
+        if($user_id!="")
         {
             $orders->where('user_id' , $user_id);
         }
-        if ($price){
+        if($price){
 
             $orders->where('price' , 'like' , "%{$price}%");
         }
-            if ($order_status_id !=""){  
+        if($order_status_id !=""){  
             //To Make Foreach in View 
             $statuses=OrderStatus::orderBy('title')->get();
             $users=User::orderBy('name')->get();
             $orders = $orders->paginate(5)->appends([
-                "status"=>$status,
+                "statuses"=>$statuses,
                 "users"=>$users
                 ]);
 
@@ -48,9 +47,9 @@ class OrderController extends Controller
         $status=OrderStatus::all();
         $users=User::all();
         $orders=$orders->paginate(5)->appends([
+            "order_status_id"=>$order_status_id,
             "user_id"=>$user_id,
             "price"=>$price,
-            "order_status_id"=>$order_status_id
         ]);
 
         return view('dashboard.orders.index',compact('orders','status','users'));

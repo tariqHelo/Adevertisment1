@@ -46,7 +46,7 @@
 
               <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
                 <li class="active"><a href="{{ route('home-view') }}">Home</a></li>
-                <li><a href="">Ads</a></li>
+                <li><a href="{{ route('allProduct') }}">Ads</a></li>
                 <li class="has-children">
                   <a href="{{ route('about') }}">About</a>
                   {{-- <ul class="dropdown">

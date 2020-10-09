@@ -22,7 +22,7 @@ class ProductController extends Controller
         $this->search = [
             'name' =>\request()->get('name') ,
             'category' => \request()->get('category') ,
-            'active' => \request()->get('active')
+            'published' => \request()->get('published')
         ];
 
 //        $category_id = Category::where('title' , 'like' , "%{$search['category']}%")->first('id')->id ?? "";
@@ -38,14 +38,15 @@ class ProductController extends Controller
             $products->where('category_id' , $this->search['category']);
         }
 
-        if ($this->search['active'] != null){
-            $products->where('active' , $this->search['active']);
+        if ($this->search['published'] != null){
+            $products->where('published' , $this->search['published']);
         }
         $categories = Category::get();
         $products = $products->paginate(9)->appends($this->search);
 //        dd($products);
-        return view('dashboard.products.index')->with('products', $products)
-            ->with('categories', $categories);
+        return view('dashboard.products.index')
+        ->with('products', $products)
+        ->with('categories', $categories);
     }
 
     /**
@@ -77,10 +78,10 @@ class ProductController extends Controller
 
         $products = Product::find($id);
         $categories = Category::get();
-        if ($products == null) {
+        if($products == null) {
             session()->flash('msg', 'w: this product not exist');
             return redirect(route('products.index'));
-        } else {
+        }else{
 
             return view('dashboard.products.show')->with("products", $products)->with("categories", $categories);
         }

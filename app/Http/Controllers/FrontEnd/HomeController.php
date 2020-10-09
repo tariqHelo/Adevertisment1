@@ -17,6 +17,9 @@ class HomeController extends Controller
         return view('frontend.home.index');
 
     }
+    public function allProduct(){
+        return view('frontend.ads.ads-all');
+    }
     public function adSingle($id){
         $orders = Order::find($id);
         return view('frontend.ads.ads-single')->with('orders',$orders);

@@ -27,9 +27,10 @@ class CreateRequest extends FormRequest
         $id = $this->route('product');
 
 		return [
-            'title' => 'required|unique:categories,title,'.$id.',id',
-            'imageFile'        => 'required||image|mimes:jpeg,png,jpg,gif,svg|max:1000',
-            'description' => 'min:10',
+            'title'       =>   'required|unique:categories,title,'.$id.',id',
+            'price'       => 'required',
+            'imageFile'   =>   'required|mimes:jpeg,png,jpg|dimensions:min_width=800,min_height=687,max_width=800,max_height=687|max:3000',
+            'description' =>    'min:10',
 
 		];
     }
