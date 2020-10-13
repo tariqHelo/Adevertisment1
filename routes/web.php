@@ -35,6 +35,11 @@ Route::get("/view",'FrontEnd\PostAdController@PostAd')->name("post-view")->middl
 
 
   Route::post("/contactus",'FrontEnd\HomeController@postContact')->name("contactus");
+  Route::post("/newsletter",'FrontEnd\NewsletterController@create')->name("newsletter");
+
+//   Route::post('newslatteremail' , 'FrontEnd\NewsletterController@create')->name('post.email');
+
+
 
   Route::get("/about",'FrontEnd\HomeController@about')->name("about");
   Route::get("/contact",'FrontEnd\HomeController@contact')->name("contact");
@@ -43,7 +48,6 @@ Route::get("/view",'FrontEnd\PostAdController@PostAd')->name("post-view")->middl
 
 
 
-  Route::post('postnewslatteremail' , 'FrontEnd\NewsletterController@create')->name('post.email');
 
 
 
@@ -85,6 +89,11 @@ Route::group([
     Route::resource('products' , 'Admin\ProductController');
     Route::get("contact_me",'Admin\ContactMeController@index')->name('contactme');
     Route::resource("contact_",'Admin\ContactMeController');
+
+
+    Route::get("newsletter",'Admin\NewsLatterController@index')->name('post.email');
+    Route::resource("newsletter_",'Admin\NewsLatterController');
+
 
     Route::resource("testimonial",'Admin\TestimonialController');
     Route::get("testimonial",'Admin\TestimonialController@index')->name('x1');

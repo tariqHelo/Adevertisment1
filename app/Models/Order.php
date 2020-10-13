@@ -38,8 +38,8 @@ class Order extends Model
         return Rating::find($this->rating)->title?? '';
     }
     public function getOrderStatusNameAttribute(){
-        // return OrderStatus::find($this->order_status_id)->title;
-        return $this->orderStatus->title;
+         return OrderStatus::find($this->order_status_id)->title;
+       // return $this->orderStatus->title;
     }
 
     public function user(){

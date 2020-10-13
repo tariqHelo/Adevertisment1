@@ -82,14 +82,7 @@
                              @csrf 
 				                   	@include("shared.msg")
                             <div class="row">
-                                <div class="col-12">
-                                    <div class="form-group">
-                              <textarea class="form-control w-100 {{$errors->has('comment')?'is-invalid':''}}"  name="comment" id="comment" cols="30" rows="9"
-                                        placeholder="Write Comment" >{{ old('comment') }}</textarea>
-                                       
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
+                             <div class="col-sm-6">
                                     <div class="form-group">
                                         <input value="{{ old('name') }}" class="form-control {{$errors->has('name')?'is-invalid':''}}" name="name" id="name" type="text" placeholder="Name">
 
@@ -101,6 +94,14 @@
 
                                     </div>
                                 </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                              <textarea class="form-control w-100 {{$errors->has('comment')?'is-invalid':''}}"  name="comment" id="comment" cols="30" rows="9"
+                                        placeholder="Write Comment" >{{ old('comment') }}</textarea>
+                                       
+                                    </div>
+                                </div>
+                               
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-success">Send Message</button>

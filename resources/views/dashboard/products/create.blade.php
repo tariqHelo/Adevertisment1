@@ -58,6 +58,10 @@
                     <textarea  class="form-control"  id="description" value="{{old('description')?? ""}}" name="description" >{{old('description')?? ""}}</textarea>
                 </div>
                 <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="text" class="form-control" id="phone" value="{{old('phone')}}" name="phone">
+                </div>
+                  <div class="form-group">
                     <label for="address">Address</label>
                     <input type="text" class="form-control" id="address" value="{{old('address')}}" name="address">
                 </div>

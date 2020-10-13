@@ -23,7 +23,7 @@
         </div>
 
         <div class="col-sm-2">
-            <select name= "order_status_id" class="form-control">
+            <select name="order_status_id" class="form-control">
                 <option value="">Any status</option>
                 @foreach($status as $status)
                     <option {{ $status->id==request()->get('order_status_id')?"selected":""}} value='{{ $status->id}}'>{{ $status->title}}</option>

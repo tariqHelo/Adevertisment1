@@ -7,6 +7,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('classyads/fonts/icomoon/style.css')}}">
+     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
     <link rel="stylesheet" href="{{asset('classyads/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('classyads/css/magnific-popup.css')}}">
@@ -38,14 +39,15 @@
       <!-- <div class="container"> -->
         <div class="row align-items-center">
           
-          <div class="col-6 col-xl-2">
-            <h1 class="mb-0 site-logo"><a href="index.html" class="text-black mb-0">Classy<span class="text-primary">Ads</span>  </a></h1>
+          <div class="col-2 col-xl-2 position-fixed">
+            <h1 class="mb-0 site-logo"><a href="" class="text-black mb-0">ezmorning<span class="text-primary">news</span>  </a></h1>
           </div>
-          <div class="col-12 col-md-10 d-none d-xl-block">
+          <div class="col-12 col-md-12 d-none d-xl-block">
             <nav class="site-navigation position-relative text-right" role="navigation">
 
               <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
                 <li class="active"><a href="{{ route('home-view') }}">Home</a></li>
+
                 <li><a href="{{ route('allProduct') }}">Ads</a></li>
                 <li class="has-children">
                   <a href="{{ route('about') }}">About</a>
@@ -58,15 +60,11 @@
                 </li>
                 <li><a href="{{ route('blog') }}">Blog</a></li>
                 <li><a href="{{ route('contact') }}">Contact</a></li>
-
-
-
-
+               
                 @guest
                 <li class="ml-xl-3 login"><a href="{{ route('login') }}"><span class="border-left pl-xl-4"></span>Log In</a></li>
                 <li><a href="{{route('register')}}">Register</a></li>
                 @else
-                  
                     <a href="{{ route('logout') }}"
                       class="border-left pl-xl-4"
                       onclick="event.preventDefault();
@@ -82,8 +80,10 @@
                                     <i class="fa fa-angle-down"></i>
                     </a>
                 @endguest
+                 <li><a href="{{ route('post-view') }}" class="cta"><span class="bg-primary text-white rounded">+ Post an Ad</span></a></li>
 
-                <li><a href="{{ route('post-view') }}" class="cta"><span class="bg-primary text-white rounded">+ Post an Ad</span></a></li>
+                 {{-- <li><a href="{{ route('post-view') }}" class="cta"><span class="bg-primary text-white rounded">+Add an blog</span></a></li> --}}
+
               </ul>
             </nav>
           </div>

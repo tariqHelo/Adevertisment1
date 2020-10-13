@@ -33,7 +33,7 @@ $settings = Setting::first();
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
+            {{-- <div class="col-md-3">
                 <form action="#" method="post">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control border-secondary text-white bg-transparent"
@@ -44,18 +44,18 @@ $settings = Setting::first();
                         </div>
                     </div>
                 </form>
-            </div>
+            </div> --}}
         </div>
         <div class="row pt-5 mt-5 text-center">
             <div class="col-md-12">
                 <div class="border-top pt-5">
-                    <p>
+                    {{-- <p>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         Copyright &copy;<script>document.write(new Date().getFullYear());</script>
                         All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i>
                         by <a href="https://colorlib.com" target="_blank">Colorlib</a>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    </p>
+                    </p> --}}
                 </div>
             </div>
         </div>

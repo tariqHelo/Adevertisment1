@@ -15,8 +15,8 @@ $abouts = About::first();
             <div class="row justify-content-center mt-5">
               <div class="col-md-8 text-center">
                 <h1>{{ $orders->id }}</h1>
-                <h1>{{ $orders->product_name }}</h1>
-                <p class="mb-0">{{ $orders->address }}</p>
+                <h1>Product Title:{{ $orders->product_name }}</h1>
+                <p class="mb-0">Address:{{ $orders->address }}</p>
               </div>
             </div>
 
@@ -39,8 +39,8 @@ $abouts = About::first();
             </div>
 
             <h4 class="h5 mb-4 text-black"></h4>
-            <p >Category   : {{ $orders->category->title }}</p>
-            <p >SubCategory   : {{ $orders->rating->title }}</p>
+            <p >Category   : {{ $orders->category->title  ?? "othor"}}</p>
+            <p >Status   : {{ $orders->rating->title ?? "" }}</p>
             <p >Details : {{ $orders->description }}</p>
             <p >Name        : {{ $orders->name }}</p>
             <p >Total Price       : {{ $orders->price }}$</p>

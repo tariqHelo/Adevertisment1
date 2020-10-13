@@ -1,6 +1,6 @@
 @extends("dashboard.layouts.app")
 
-@section("title","Create New Product")
+@section("title","Edit Product")
 
 
 @section("content")
@@ -27,6 +27,19 @@
                             <option
                                 {{old('category_id')== $category->id?"selected":""}} value='{{$category->id}}'>{{$category->title}}</option>
                         @endforeach
+                    </select>
+                </div>
+                    </div>
+                    <div class="form-group has-success" name="rating_id" id="rating_id">
+                    <label for="form_control_1">subcategory</label>
+                    <select name="rating_id" class="form-control">
+                        <option value="0">Select subcategory</option>
+                        @if(\App\Models\Rating::get() != null)
+                            @foreach(\App\Models\Rating::get() as $rating)
+                                <option
+                                    {{old('rating_id')== $rating->id?"selected":""}} value='{{$rating->id}}'>{{$rating->title}}</option>
+                            @endforeach
+                         @endif
                     </select>
                 </div>
 
@@ -56,6 +69,10 @@
                 <div class="form-group">
                     <label for="address">Address</label>
                     <input type="text" class="form-control"  id="address" value="{{old('address')??$product->address}}" name="address" >
+                </div>
+                 <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="text" class="form-control"  id="phone" value="{{old('phone')??$product->phone}}" name="phone" >
                 </div>
                <div class="md-checkbox-inline">
                     <div class="md-checkbox">

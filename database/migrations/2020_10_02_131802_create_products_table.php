@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('title');
             $table->string('image');
             $table->integer('price');
-            $table->integer('phone')->default(0);
+            $table->integer('phone');
             $table->text('description');
             $table->integer('reviews')->default(0);
             $table->string('address');

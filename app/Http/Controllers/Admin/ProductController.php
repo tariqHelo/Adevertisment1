@@ -1,14 +1,15 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use App\Models\Rating;
+
+
 use App\Models\Product;
-
-
 use App\Models\Category;
 use App\Http\Controllers\Controller;
+
+
 use App\Http\Requests\Product\EditRequest;
-
-
 use App\Http\Requests\Product\CreateRequest;
 use App\Http\Requests\Product\CreateProductRequest;
 
@@ -42,6 +43,7 @@ class ProductController extends Controller
             $products->where('published' , $this->search['published']);
         }
         $categories = Category::get();
+        
         $products = $products->paginate(9)->appends($this->search);
 //        dd($products);
         return view('dashboard.products.index')
@@ -91,14 +93,16 @@ class ProductController extends Controller
     {
 
         $product = Product::find($id);
-
         $categories = Category::all();
-
+        $ratings = Rating::all();
         if($product==null){
             session()->flash("msg", "The Product was not found");
             return redirect(route("product.index"));
         }
-        return view("dashboard.products.edit")->withProduct($product)->withCategories($categories);
+        return view("dashboard.products.edit")
+        ->withProduct($product)
+        ->withCategories($categories)
+        ->withRating($ratings);
     }
 
     public function update(EditRequest $request,  $id)

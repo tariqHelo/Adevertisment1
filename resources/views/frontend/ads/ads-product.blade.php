@@ -13,8 +13,8 @@
             <div class="row justify-content-center mt-5">
               <div class="col-md-8 text-center">
                 <h1>{{ $products->id }}</h1>
-                <h1>{{ $products->product_name }}</h1>
-                <p class="mb-0">{{ $products->address }}</p>
+                <h1>Product Title:{{ $products->title  }}</h1>
+                <p class="mb-0">Address : {{ $products->address }}</p>
               </div>
             </div>
 
@@ -37,13 +37,11 @@
             </div>
 
              <h4 class="h5 mb-4 text-black"></h4>
-            <p >Category   : {{ $products->category->title }}</p>
-            <p >SubCategory   : {{ $products->rating->title }}</p>
+            <p >Category   : {{ $products->category->title ?? "othor" }}</p>
+            <p >Status   : {{ $products->rating->title ?? "offer" }}</p>
             <p >Details     : {{ $products->description }}</p>
-            <p >Name        : {{ $products->name }}</p>
             <p >Total Price       : {{ $products->price }}$</p>
             <p >phone       : {{ $products->phone }}</p>
-            <p >email       : {{ $products->email }}</p>
           </div>
 
 

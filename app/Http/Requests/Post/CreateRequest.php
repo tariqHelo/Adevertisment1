@@ -27,9 +27,9 @@ class CreateRequest extends FormRequest
         $id = $this->route('post');
 
 		return [
-            'title' => 'required|unique:posts,title,'.$id.',id',
+            'title'       => 'required|unique:posts,title,'.$id.',id',
             'description' => 'min:10',
-            'imageFile' => 'required|image',
+            'imageFile'   => 'required|mimes:jpeg,png,jpg|dimensions:min_width=1900,min_height=1266,max_width=1900,max_height=1268|max:3000',
 
 		];
     }

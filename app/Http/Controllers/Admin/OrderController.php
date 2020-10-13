@@ -20,39 +20,41 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         $user_id = \request()->get('user_id') ;
         $price = \request()->get('price') ;
         $order_status_id = \request()->get('order_status_id');
-        $orders=Order::orderBy('id','desc');
-        if($user_id!="")
-        {
-            $orders->where('user_id' , $user_id);
-        }
-        if($price){
+        $product_id = \request()->get('product_id') ;
 
-            $orders->where('price' , 'like' , "%{$price}%");
+        $orders=Order::orderBy('id', 'desc');
+        if ($user_id!="") {
+            $orders->where('user_id', $user_id);
         }
-        if($order_status_id !=""){  
-            //To Make Foreach in View 
-            $statuses=OrderStatus::orderBy('title')->get();
-            $users=User::orderBy('name')->get();
-            $orders = $orders->paginate(5)->appends([
-                "statuses"=>$statuses,
-                "users"=>$users
-                ]);
+        if ($price) {
+            $orders->where('price', 'like', "%{$price}%");
+        }
+        if ($product_id!=""){
 
-                $orders->where('order_status_id' , $order_status_id);
-            }
+            $orders->where('product_id' , $product_id);
+        }
+        if ($order_status_id !=""){
+
+            $orders->where('order_status_id' , $order_status_id);
+        }
         $status=OrderStatus::all();
         $users=User::all();
+        $products=Product::orderby('title')->get();
         $orders=$orders->paginate(5)->appends([
-            "order_status_id"=>$order_status_id,
             "user_id"=>$user_id,
             "price"=>$price,
+            "product_id"=>$product_id,
+            "order_status_id"=>$order_status_id
         ]);
 
-        return view('dashboard.orders.index',compact('orders','status','users'));
+
+           
+    
+        return view('dashboard.orders.index',compact('orders','status','users','products'));
     }
 
 

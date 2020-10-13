@@ -1,5 +1,5 @@
 @php
-$products = App\Models\Product::get() ;
+$products = App\Models\Product::paginate(14) ;
 $half = ceil($products->count() / 2);
 $chunks = $products->chunk(intval($half));
 @endphp
@@ -36,5 +36,7 @@ $chunks = $products->chunk(intval($half));
                             </div >
                 @endforeach
         </div>
+    {{ $products->links("pagination::bootstrap-4") }}
+
     </div>
 </div>

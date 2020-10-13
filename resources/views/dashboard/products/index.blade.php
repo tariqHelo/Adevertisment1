@@ -1,7 +1,6 @@
 @extends("dashboard.layouts.app")
 @section("title", "Manage Products")
 @section("content")
-    {{--{{dd($products)}}--}}
     <form class='row'>
         <div class='col-sm-2'>
             <input type='text' class="form-control" placeholder="enter product name" name="name"/></div>
@@ -37,10 +36,11 @@
             <tr class="success">
                 <th>title</th>
                 <th>category</th>
+                <th>Subcategory</th>
                 <th>image</th>
-                <th> description</th>
                 <th>price</th>
                 <th> address</th>
+                <th> phone</th>
                 <th>published</th>
                 <th>Edit / Delete</th>
 
@@ -52,6 +52,8 @@
                 <tr>
                     <td><a href="{{ route('products.show' , $product->id) }}">{{ $product->title }}</a></td>
                     <td>{{ $product->category->title?? "other category" }}</td>
+                    <td>{{ $product->rating->title?? "other category" }}</td>
+
                     <td>
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Popup
                             image
@@ -69,9 +71,9 @@
                             </div>
                         </div>
                     </td>
-                    <td>{{ $product->description }}</td>
                     <td>{{ $product->price }}</td>
                     <td>{{ $product->address }}</td>
+                    <td>{{ $product->phone }}</td>
                     <td>
                         <input type="checkbox" disabled {{ $product->published == 1 ?"checked" : "" }}>
                     </td>

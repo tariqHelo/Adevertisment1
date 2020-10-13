@@ -8,13 +8,18 @@ use session;
 use App\Models\Newsletter;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\NewsletterRequest;
+use Illuminate\Http\Request;
+
 
 class NewsletterController extends Controller
 {
+
+
     public function create(NewsletterRequest $request)
     {
-       dd($request->all());
-        if(Newsletter::where('email' , $request->get('email'))->get() == null){
+
+         //Newsletter::create($request->all());
+        if(Newsletter::where('email' , $request->get('email'))->get() !== $request->get('email')){
             Newsletter::create([
                 'email'=>$request->get('email')
             ]);
@@ -26,4 +31,5 @@ class NewsletterController extends Controller
         }
 
     }
+    
 }
